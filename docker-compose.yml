@@ -1,0 +1,15 @@
+
+services:
+  # This is your "Service Name" (internal nickname)
+  visualizer-app:
+    # Build tells Docker to look for your 'Dockerfile' in the current folder (.)
+    build: .
+    # Image is the name the final package will have on your Mac
+    image: just-jul/algorithm-visualizer:latest
+    # Ports: "HostPort:ContainerPort"
+    # This maps port 8080 on your Mac to port 8080 inside the container
+    ports:
+      - "8080:8080"
+    # Environment variables (optional but good for Spring Boot)
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev

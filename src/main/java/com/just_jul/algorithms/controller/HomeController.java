@@ -1,13 +1,13 @@
-package com.just_jul.algorithms;
+package com.just_jul.algorithms.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class HomeController {
    
     @RequestMapping("/")
-    public String greet(){
+    public String home(){
         return "Hello";
     }
 }

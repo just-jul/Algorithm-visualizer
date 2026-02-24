@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algorithm Visualizer</title>
-    <link href="src/main/resources/templates/styles.css" rel="stylesheet">
+    <link th:href="@{/output.css}" rel="stylesheet">
 </head>
 <body>
 
 
-    <h1>Algorithm Visualizer</h1>
+    <h1 class="text-center m-4 text-3xl font-bold">Algorithm Visualizer</h1>
 
 
-    <div>
-        <div>Bubble Sort</div>
-    </div>
-    <div>
-        <div>Selection Sort</div>
-    </div>
-    <div>
-        <div>Binary Search</div>
-    </div>
-    <div>
-        <div>Dijkstra</div>
+    <!-- container -->
+    <div class="flex flex-col items-center justify-center gap-8 bg-green-100">
+        <div class="flex items-center gap-14">
+            <div>
+                <div class="font-medium">Bubble Sort</div>
+            </div>
+            <div>
+                <div class="font-medium">Selection Sort</div>
+            </div>
+        </div>
+        <div class="flex gap-14">
+            <div>
+                <div class="font-medium">Binary Search</div>
+            </div>
+            <div>
+                <div class="font-medium">Dijkstra</div>
+            </div>
+        </div>
     </div>
     
 

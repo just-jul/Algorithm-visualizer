@@ -4,34 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BubbleSort</title>
+    <link th:href="@{/output.css}" rel="stylesheet">
 </head>
 <body>
     
-    <div>
+    <div class="flex justify-center items-center h-screen w-screen">
 
-        <svg width="600" height="300" style="background: #f4f4f4;">
-            <g transform="translate(10, 10)"> 
-                <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
-                <text x="22.5" y="150" text-anchor="middle" fill="black" font-weight="bold">6</text>
-            </g>
-            <g transform="translate(60, 10)"> 
-                <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
-                <text x="22.5" y="150" text-anchor="middle" fill="black" font-weight="bold">20</text>
-            </g>
-            <g transform="translate(120, 10)"> 
-                <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
-                <text>1</text>
-            </g>
-            <g transform="translate(180, 10)"> 
-                <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
-                <text>18</text>
-            </g>
-        </svg>
+        <div>
+            <svg class="flex justify-center items-center" width="600" height="300" style="background: #f4f4f4;">
+                <g transform="translate(10, 10)"> 
+                    <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
+                    <text x="22.5" y="150" text-anchor="middle" fill="black" font-weight="bold">6</text>
+                </g>
+                <g transform="translate(60, 10)"> 
+                    <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
+                    <text x="22.5" y="150" text-anchor="middle" fill="black" font-weight="bold">20</text>
+                </g>
+                <g transform="translate(120, 10)"> 
+                    <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
+                    <text>1</text>
+                </g>
+                <g transform="translate(180, 10)"> 
+                    <rect height="169.75" width="45" style="fill: rgb(173, 216, 230);"></rect>
+                    <text>18</text>
+                </g>
+            </svg>
+            
+        </div>
+
         
     </div>
 
 
 
+    <script>
+        async function runSort(){
+            const array = [6, 20, 1, 18];
+
+            const response = await fetch("http://localhost:8080/api/sort", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ array: array, algorithm: "bubble" })
+            });
+
+        const data = await response.json();
+        animateSteps(data.steps);
+
+
+
+        }
+    </script>
 
 </body>
 </html>

@@ -1,6 +1,9 @@
 package com.just_jul.algorithms;
 
 import org.junit.jupiter.api.Test;
+
+import com.just_jul.algorithms.algorithms.BubbleSort;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.BeforeEach;

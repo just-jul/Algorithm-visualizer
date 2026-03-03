@@ -1,4 +1,4 @@
-package com.just_jul.algorithms;
+package com.just_jul.algorithms.algorithms;
 
 public class BinarySearch {
     

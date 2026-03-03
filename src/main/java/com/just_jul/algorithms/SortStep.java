@@ -22,5 +22,13 @@ public class SortStep {
     public int getIndexB(){
         return indexB;
     }
+    public void swap(int indexA, int indexB, int[] currArray){
+        if(!isSwapped){
+            int temp = currArray[indexA];
+            currArray[indexA] = currArray[indexB];
+            currArray[indexB] = temp;
+            isSwapped = true;
+        }
+    }
     
 }

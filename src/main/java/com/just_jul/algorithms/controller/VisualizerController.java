@@ -18,7 +18,7 @@ public class VisualizerController {
     }
 
     @GetMapping("/binary-search")
-    public String binarySearchPage(){
+    public String getBinarySearchPage(){
         return "binarysearch";
     }
 
@@ -26,12 +26,12 @@ public class VisualizerController {
     // TO DO (logic + front-end)
 
     @GetMapping("/dijkstra")
-    public String dijkstraPage(){
+    public String getDijkstraPage(){
         return "dijkstra";
     }
 
     @GetMapping("/quick-sort")
-    public String quickSortPage(){
+    public String getQuickSortPage(){
         return "quicksort";
     }
 }

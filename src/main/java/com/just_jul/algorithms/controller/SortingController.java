@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.just_jul.algorithms.service.SortingService;
 
-// receives POST request from js 
+// receives POST request from js, from "http://localhost:8080/bubble-sort"
 
 @RestController
 @RequestMapping("/api")

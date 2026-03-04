@@ -41,7 +41,7 @@
         async function runSort(){
             const array = [6, 20, 1, 18];
 
-            const response = await fetch("http://localhost:8080/api/sort", {
+            const response = await fetch("http://localhost:8080/api/bubble-sort", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ array: array, algorithm: "bubble" })

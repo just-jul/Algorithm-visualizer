@@ -28,6 +28,7 @@ public class SortingService {
     public SortingResponse sort(SortingRequest request){
         // receives request, calls right algorithm, returns response
 
+        // if Bubble Sort then algo -> BubbleSort
         SortingAlgorithm algo = sortingAlgorithms.get(request.getAlgorithm());
 
         // creating the list of steps from algorithm which SortingResponse gets

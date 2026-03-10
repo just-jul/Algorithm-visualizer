@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 @Component
 public class BubbleSort implements SortingAlgorithm {
@@ -24,7 +23,7 @@ public class BubbleSort implements SortingAlgorithm {
         steps.add(arr.clone());
 
         for(int i = 0; i < arr.length - 1; i++){
-            for(int j = 0; i < arr.length - i - 1; j++){
+            for(int j = 0; j < arr.length - 1 - i; j++){
                 if(arr[j] > arr[j+1]){
                     int temp = arr[j];
                     arr[j] = arr[j + 1];

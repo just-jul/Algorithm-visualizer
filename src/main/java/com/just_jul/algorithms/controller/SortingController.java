@@ -24,7 +24,8 @@ public class SortingController {
         this.sortingService = sortingService;
     }
 
-    @PostMapping("/bubble-sort")
+    // for both Bubble Sort and Quick Sort
+    @PostMapping("/sort")
     public ResponseEntity<SortingResponse> getBubbleSort(@RequestBody SortingRequest request){
         return ResponseEntity.ok(sortingService.sort(request));
     }

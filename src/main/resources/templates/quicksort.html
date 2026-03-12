@@ -11,15 +11,19 @@
     <div class="flex justify-center items-center h-screen w-screen">
 
         <!-- input section -->
-        <div>
-            <label for="array-elements">Enter array elements (separated by coma and space eg. 3, 4, 5): </label>
-        <input type="text">
+        <div class="m-4">
+            <label for="array-elements" class="text-base">Enter array elements: </label>
+        <input type="text" name="elements" placeholder="3, 4, 5" class="block min-w-120 grow bg-gray-200 py-1.5 pr-3 pl-1 font-medium text-white rounded placeholder:text-gray-500 focus:outline-none text-base sm:text-sm/6">
         </div>
+    
+        <button id="btn" class="m-4 bg-blue-500 text-white font-medium rounded px-6 py-2 hover:bg-blue-700 cursor-pointer">
+            Sort
+        </button>
     
 
         <!-- sorting section -->
-        <div>
-            <svg class="flex justify-center items-center" width="600" height="500" border-blue-500 style="background: #f4f4f4;">
+        <div class="flex justify-center items-center">
+            <svg width="600" height="500" border-blue-500 style="background: #f4f4f4;">
                 <g class="self-center">
                     <g transform="translate(10, 440)"> 
                         <rect height="60" width="45" style="fill: rgb(173, 216, 230);"></rect>
@@ -57,7 +61,7 @@
         sortButton.addEventListener("click", async ()=> {
             const array = [6, 20, 1, 18];
 
-            const response = await fetch("http://localhost:8080/api/sort", {
+            const response = await fetch("http://localhost:8080/api/sort", { // api/sort is the endpoint specified in controller
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ array: array, algorithm: "bubble" })

@@ -17,10 +17,10 @@ import com.just_jul.algorithms.service.SortingService;
 
 @RestController
 @RequestMapping("/api")
-public class SortingController {
+public class SortingAPIController {
     private final SortingService sortingService;
 
-    public SortingController(SortingService sortingService){
+    public SortingAPIController(SortingService sortingService){
         this.sortingService = sortingService;
     }
 

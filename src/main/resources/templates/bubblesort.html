@@ -12,8 +12,8 @@
 
         <!-- input section -->
         <div class="m-4">
-            <label for="array-elements" class="text-base">Enter array elements: </label>
-        <input type="text" name="elements" placeholder="3, 4, 5" class="block min-w-120 grow bg-gray-200 py-1.5 pr-3 pl-1 font-medium text-white rounded placeholder:text-gray-500 focus:outline-none text-base sm:text-sm/6">
+            <label for="elements" class="text-base">Enter array elements: </label>
+            <input type="text" id="elements" placeholder="3, 4, 5" class="block min-w-120 grow bg-gray-200 py-1.5 pr-3 pl-1 font-medium text-black rounded placeholder:text-gray-500 focus:outline-none text-base sm:text-sm/6">
         </div>
     
         <button id="btn" class="m-4 bg-blue-500 text-white font-medium rounded px-6 py-2 hover:bg-blue-700 cursor-pointer">
@@ -22,7 +22,7 @@
 
         <!-- sorting section -->
         <div class="flex justify-center items-center" >
-            <svg width="600" height="500" border-blue-500 style="background: #f4f4f4;">
+            <svg width="600" height="500" border-blue-500 style="background: #f4f4f4;" id="visualizer">
                 <g>
                     <g transform="translate(10, 440)"> 
                         <rect height="60" width="45" style="fill: rgb(173, 216, 230);"></rect>
@@ -46,10 +46,10 @@
         </div>
 
         <div class="flex">
-            <button class="m-4 bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 cursor-pointer">
+            <button id="arrow-left" class="m-4 bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 cursor-pointer">
                 <img src="/icons/arrow_left.svg" alt="next">
             </button>
-            <button class="m-4 bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 cursor-pointer">
+            <button id="arrow-right" class="m-4 bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 cursor-pointer">
                 <img src="/icons/arrow_right.svg" alt="prev">
             </button>
     
@@ -61,11 +61,43 @@
 
     <!-- can i have only 1 html pages for sorting or not ?  -->
     <script>
+        const btnLeft = document.getElementById("arrow-left");
+        const btnRight = document.getElementById("arrow-right");
 
+        const svg = document.getElementById("visualizer");
         const sortButton = document.getElementById("btn");
 
+        const input = document.getElementById("elements");
+
+
+        let stepsArray = []; // for arrow buttons
+        let currentStep = 0; // counter
+
+        svg.innerHTML = "";
+
+
+        // get array from input
+        function parseInputIntoArray (input){
+            const arrayString = input.toString();
+            return arrayString.split(', ');
+        }
+
+        function renderBars(array) {
+            array.forEach(element => {
+                let group = document.createElementNS("g");
+                let rectangle = document.createElementNS("rect");
+                let text = document.createElementNS("text");
+
+                svg.appendChild(group);
+                group.appendChild(rectangle);
+                group.appendChild(text);
+            });
+
+        }
+
         sortButton.addEventListener("click", async ()=> {
-            const array = [6, 20, 1, 18];
+            // get array from input
+            const array = parseInputIntoArray(input);
 
             const response = await fetch("http://localhost:8080/api/sort", { // api/sort is the endpoint specified in controller
             method: "POST",
@@ -74,9 +106,47 @@
             });
 
             const data = await response.json();
-            animateSteps(data.steps);
+            let steps = data.steps;
+
+            animateSteps(steps);
             }
         );
+
+        function animateSteps(steps){
+            // store the array of steps
+            stepsArray = steps;
+            // reset currentStep
+            currentStep = 0;
+
+            //call renderBars
+            renderBars(steps[0]);
+        }
+
+        // steps = [
+        //     [6, 20, 1, 18],   ← steps[0]
+        //     [6, 1, 20, 18],   ← steps[1]
+        //     [1, 6, 20, 18],   ← steps[2]
+        //     [1, 6, 18, 20]    ← steps[3]
+        // ]
+
+        btnLeft.addEventListener("click", async ()=>{
+            if (currentStep === 0){
+                console.log("Cant go step back");
+                return 0;
+            }
+            currentStep--;
+
+            renderBars(stepsArray[currentStep]); // array of arrays of single steps
+        });
+        btnRight.addEventListener("click", async ()=>{
+            if (currentStep === steps.length){
+                console.log("Cant go step forward");
+                return 0;
+            }
+            currentStep++;
+
+            renderBars(stepsArray[currentStep]);
+        });
     
     </script>
 

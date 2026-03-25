@@ -12,8 +12,8 @@
 
         <!-- input section -->
         <div class="m-4">
-            <label for="array-elements" class="text-base">Enter array elements: </label>
-        <input type="text" name="elements" placeholder="3, 4, 5" class="block min-w-120 grow bg-gray-200 py-1.5 pr-3 pl-1 font-medium text-white rounded placeholder:text-gray-500 focus:outline-none text-base sm:text-sm/6">
+            <label for="elements" class="text-base">Enter array elements: </label>
+        <input type="text" id="elements" placeholder="3, 4, 5" class="block min-w-120 grow bg-gray-200 py-1.5 pr-3 pl-1 font-medium text-black rounded placeholder:text-gray-500 focus:outline-none text-base sm:text-sm/6">
         </div>
     
         <button id="btn" class="m-4 bg-blue-500 text-white font-medium rounded px-6 py-2 hover:bg-blue-700 cursor-pointer">
@@ -55,6 +55,22 @@
     </div>
 
     <script>
+        const svg = document.getElementById("visualizer");
+
+        svg.innerHTML = "";
+
+        function renderBars(array) {
+            array.forEach(element => {
+                let group = document.createElementNS("g");
+                let rectangle = document.createElementNS("rect");
+                let text = document.createElementNS("text");
+
+                svg.appendChild(group);
+                group.appendChild(rectangle);
+                group.appendChild(text);
+            });
+
+        }
 
         const sortButton = document.getElementById("btn");
 
